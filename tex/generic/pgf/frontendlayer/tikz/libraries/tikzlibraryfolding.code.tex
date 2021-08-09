@@ -605,6 +605,8 @@
   pics/octahedron truncated folding/.style    = {code=\tikzfoldingtruncatedoctahedron[];},
   pics/dodecahedron folding/.style            = {code=\tikzfoldingdodecahedron[];},
   pics/dodecahedron' folding/.style           = {code=\tikzfoldingalternatedodecahedron[];},
+  pics/dodecahedron rhombic folding/.style    = {code=\tikzfoldingrhombicdodecahedron[];},
+  pics/dodecahedron golden folding/.style     = {code=\tikzfoldinggoldenrhombicdodecahedron[];},
   pics/cuboctahedron folding/.style           = {code=\tikzfoldingcuboctahedron[];},
   pics/cuboctahedron truncated folding/.style = {code=\tikzfoldingtruncatedcuboctahedron[];},
   pics/icosahedron folding/.style             = {code=\tikzfoldingicosahedron[];},
@@ -708,23 +710,22 @@
   \endgroup
 }%
 
-%alternative dodecahedron: larger format possible
-
+%alternative dodecahedron: larger format possible, ordered faces, rotated for ease of reading
 \def\tikzfoldingalternatedodecahedron#1[#2]#3;{%
   \begingroup%
     \tikzset{#2}%
     \tikz@lib@fold@pentagon
-        {\tikz@lib@fold@face@A}
+        {\scope[rotate=180]\tikz@lib@fold@face@I\endscope}
         {\tikz@lib@fold@pentagon
-             {\tikz@lib@fold@face@B}
+             {\scope[rotate=36]\tikz@lib@fold@face@F\endscope}
              {\tikz@lib@fold@cut@path}
              {\tikz@lib@fold@ear@path}
              {\tikz@lib@fold@path}
              {\tikz@lib@fold@cut@path}
              {\tikz@lib@fold@pentagon
-                  {\tikz@lib@fold@face@C}
+                  {\tikz@lib@fold@face@A}
                   {\tikz@lib@fold@pentagon
-                       {\tikz@lib@fold@face@D}
+                       {\scope[rotate=180]\tikz@lib@fold@face@D\endscope}
                        {\tikz@lib@fold@ear@path}
                        {\tikz@lib@fold@ear@path}
                        {\tikz@lib@fold@path}
@@ -732,7 +733,7 @@
                        {\tikz@lib@fold@ear@path}
                   }
                   {\tikz@lib@fold@pentagon
-                       {\tikz@lib@fold@face@E}
+                       {\scope[rotate=180]\tikz@lib@fold@face@E\endscope}
                        {\tikz@lib@fold@ear@path}
                        {\tikz@lib@fold@ear@path}
                        {\tikz@lib@fold@path}
@@ -741,7 +742,7 @@
                   }
                   {\tikz@lib@fold@path}
                   {\tikz@lib@fold@pentagon
-                       {\tikz@lib@fold@face@F}
+                       {\scope[rotate=180]\tikz@lib@fold@face@B\endscope}
                        {\tikz@lib@fold@ear@path}
                        {\tikz@lib@fold@ear@path}
                        {\tikz@lib@fold@path}
@@ -749,7 +750,7 @@
                        {\tikz@lib@fold@cut@path}
                   }
                   {\tikz@lib@fold@pentagon
-                       {\tikz@lib@fold@face@G}
+                       {\scope[rotate=180]\tikz@lib@fold@face@C\endscope}
                        {\tikz@lib@fold@ear@path}
                        {\tikz@lib@fold@ear@path}
                        {\tikz@lib@fold@path}
@@ -760,9 +761,9 @@
         }
         {\tikz@lib@fold@ear@path}
         {\tikz@lib@fold@pentagon
-             {\tikz@lib@fold@face@H}
+             {\tikz@lib@fold@face@L}
              {\tikz@lib@fold@pentagon
-                  {\tikz@lib@fold@face@I}
+                  {\scope[rotate=180]\tikz@lib@fold@face@G\endscope}
                   {\tikz@lib@fold@cut@path}
                   {\tikz@lib@fold@ear@path}
                   {\tikz@lib@fold@path}
@@ -770,7 +771,7 @@
                   {\tikz@lib@fold@cut@path}
              }
              {\tikz@lib@fold@pentagon
-                  {\tikz@lib@fold@face@J}
+                  {\scope[rotate=180]\tikz@lib@fold@face@H\endscope}
                   {\tikz@lib@fold@cut@path}
                   {\tikz@lib@fold@cut@path}
                   {\tikz@lib@fold@path}
@@ -779,7 +780,7 @@
         }
         {\tikz@lib@fold@path}
         {\tikz@lib@fold@pentagon
-             {\tikz@lib@fold@face@K}
+             {\scope[rotate=180]\tikz@lib@fold@face@J\endscope}
              {\tikz@lib@fold@cut@path}
              {\tikz@lib@fold@ear@path}
              {\tikz@lib@fold@path}
@@ -787,7 +788,7 @@
              {\tikz@lib@fold@cut@path}
         }
         {\tikz@lib@fold@pentagon
-             {\tikz@lib@fold@face@L}
+             {\scope[rotate=180]\tikz@lib@fold@face@K\endscope}
              {\tikz@lib@fold@cut@path}
              {\tikz@lib@fold@ear@path}
              {\tikz@lib@fold@path}
@@ -2122,15 +2123,15 @@
 \def\tikzfoldingrhombicdodecahedron#1[#2]#3;{%
   \begingroup%
     \tikzset{#2}%
-    \tikz@lib@fold@squarerhombusr{\tikz@lib@fold@face@A}
-    {\tikz@lib@fold@squarerhombusl{\tikz@lib@fold@face@B}
+    \tikz@lib@fold@squarerhombusr{\tikz@lib@fold@face@B}
+    {\tikz@lib@fold@squarerhombusl{\scope[rotate=90]\tikz@lib@fold@face@C\endscope}
       {\tikz@lib@fold@cut@path}
       {\tikz@lib@fold@ear@path}
       {\tikz@lib@fold@path}
       {\tikz@lib@fold@ear@path}
     }
-    {\tikz@lib@fold@squarerhombusr{\tikz@lib@fold@face@C}
-      {\tikz@lib@fold@squarerhombusl{\tikz@lib@fold@face@I}
+    {\tikz@lib@fold@squarerhombusr{\tikz@lib@fold@face@E}
+      {\tikz@lib@fold@squarerhombusl{\scope[rotate=90]\tikz@lib@fold@face@F\endscope}
         {\tikz@lib@fold@cut@path}
         {\tikz@lib@fold@cut@path}
         {\tikz@lib@fold@path}
@@ -2138,23 +2139,23 @@
       }
       {\tikz@lib@fold@cut@path}
       {\tikz@lib@fold@path}
-      {\tikz@lib@fold@squarerhombusr{\tikz@lib@fold@face@G}
+      {\tikz@lib@fold@squarerhombusr{\scope[rotate=180]\tikz@lib@fold@face@D\endscope}
         {\tikz@lib@fold@cut@path}
         {\tikz@lib@fold@cut@path}
         {\tikz@lib@fold@path}
         {\tikz@lib@fold@cut@path}
       }
     }
-    {\tikz@lib@fold@squarerhombusl{\tikz@lib@fold@face@D}
-      {\tikz@lib@fold@squarerhombusr{\tikz@lib@fold@face@E}
-        {\tikz@lib@fold@squarerhombusl{\tikz@lib@fold@face@J}
-          {\tikz@lib@fold@squarerhombusr{\tikz@lib@fold@face@L}
+    {\tikz@lib@fold@squarerhombusl{\scope[rotate=-90]\tikz@lib@fold@face@H\endscope}
+      {\tikz@lib@fold@squarerhombusr{\scope[rotate=180]\tikz@lib@fold@face@G\endscope}
+        {\tikz@lib@fold@squarerhombusl{\scope[rotate=-90]\tikz@lib@fold@face@L\endscope}
+          {\tikz@lib@fold@squarerhombusr{\scope[rotate=180]\tikz@lib@fold@face@K\endscope}
             {\tikz@lib@fold@ear@path}
             {\tikz@lib@fold@cut@path}
             {\tikz@lib@fold@path}
             {\tikz@lib@fold@ear@path}
           }
-          {\tikz@lib@fold@squarerhombusl{\tikz@lib@fold@face@K}
+          {\tikz@lib@fold@squarerhombusl{\scope[rotate=90]\tikz@lib@fold@face@J\endscope}
             {\tikz@lib@fold@ear@path}
             {\tikz@lib@fold@cut@path}
             {\tikz@lib@fold@path}
@@ -2167,7 +2168,7 @@
         {\tikz@lib@fold@path}
         {\tikz@lib@fold@ear@path}
       }
-      {\tikz@lib@fold@squarerhombusl{\tikz@lib@fold@face@H}
+      {\tikz@lib@fold@squarerhombusl{\scope[rotate=90]\tikz@lib@fold@face@I\endscope}
         {\tikz@lib@fold@ear@path}
         {\tikz@lib@fold@ear@path}
         {\tikz@lib@fold@path}
@@ -2176,7 +2177,7 @@
       {\tikz@lib@fold@path}
       {\tikz@lib@fold@ear@path}
     }
-    {\tikz@lib@fold@squarerhombusr{\tikz@lib@fold@face@F}
+    {\tikz@lib@fold@squarerhombusr{\scope[rotate=180]\tikz@lib@fold@face@A\endscope}
       {\tikz@lib@fold@cut@path}
       {\tikz@lib@fold@cut@path}
       {\tikz@lib@fold@path}
